@@ -3,7 +3,7 @@ var knox = require('knox');
 var client = knox.createClient({
   key: process.env.AWS_KEY,
   secret: process.env.AWS_SECRET,
-  bucket: process.env.BUCKET_NAME || 'cloudy-test'
+  bucket: process.env.BUCKET_NAME
 });
 
 var stream = require('stream');
