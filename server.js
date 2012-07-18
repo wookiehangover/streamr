@@ -17,6 +17,9 @@ var server = http.createServer(function( req, res ){
     form.WriteStream = knoxStream;
     form.uploadDir = __dirname + '/tmp';
 
+    form.on('progress', function() {
+      console.log('Formidable Received ', Math.floor(this.bytesReceived/this.bytesExpected*100));
+    });
     form.parse( req, function( err, fields, files){
       res.writeHead(200, {'content-type': 'text/plain'});
       res.write('received upload:\n\n');
