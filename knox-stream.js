@@ -14,7 +14,10 @@ function WriteStream( path, file ){
   this.writable = true;
 
   client.putStream( this, file, function( err, res ){
-    console.log(res.statusCode);
+    console.log('response status', res.statusCode);
+    res.on('data', function(chunk) {
+           console.log("response body chunk: " + chunk);
+       });
   });
 }
 
