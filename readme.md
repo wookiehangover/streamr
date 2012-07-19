@@ -18,7 +18,7 @@ stream.pipe instead of manual event bindings).
 To run the example app you'll need to set your AWS creds (and bucket
 name) as environment variables.
 
-    $ export AWS_KEY=(your aws key) AWS_SECRET=(your secret) BUCKET=(bucket name)
+    $ export AWS_KEY=(your aws key) AWS_SECRET=(your secret) BUCKET_NAME=(bucket name)
     $ node server
     > server listening on port 3000
 
