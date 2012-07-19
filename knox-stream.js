@@ -10,8 +10,11 @@ var stream = require('stream');
 var util = require('util');
 
 function WriteStream( path, file ){
+  var source = this;
   stream.Stream.call(this);
   this.writable = true;
+  this.readable = true;
+  this.paused = false;
 
   client.putStream( this, file, function( err, res ){
     console.log('response status', res.statusCode);
@@ -23,14 +26,26 @@ function WriteStream( path, file ){
 
 util.inherits( WriteStream, stream.Stream );
 
-WriteStream.prototype.write = function( data, cb ){
+WriteStream.prototype.write = function( data ){
+//  console.log('WriteStream.write');
   this.emit('data', data);
-  cb();
+  return !this.paused;
+};
+
+WriteStream.prototype.resume = function(cb){
+//  console.log('WriteStream.resume');
+  this.paused = false;
+  this.emit('drain');
+};
+
+WriteStream.prototype.pause = function(cb){
+//  console.log('WriteStream.pause');
+  this.paused = true;
 };
 
 WriteStream.prototype.end = function(cb){
   this.emit('end');
-  cb();
+  return cb();
 };
 
 module.exports = WriteStream;

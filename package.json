@@ -5,7 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "ecstatic": "0.1.6",
-    "formidable": "git://github.com/wookiehangover/node-formidable.git",
+    "formidable": "git://github.com/burgalon/node-formidable.git",
     "knox": "git://github.com/wookiehangover/knox.git"
   },
   "devDependencies": {},
