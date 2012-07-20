@@ -1,3 +1,4 @@
+var port = process.env.PORT || 8081;
 var
   fs   = require('fs'),
   http = require('http'),
@@ -16,6 +17,9 @@ var server = http.createServer(function( req, res ){
     form.WriteStream = knoxStream;
     form.uploadDir = __dirname + '/tmp';
 
+    form.on('progress', function() {
+      console.log('Formidable Received ', Math.floor(this.bytesReceived/this.bytesExpected*100));
+    });
     form.parse( req, function( err, fields, files){
       res.writeHead(200, {'content-type': 'text/plain'});
       res.write('received upload:\n\n');
@@ -34,5 +38,5 @@ var server = http.createServer(function( req, res ){
 
 });
 
-server.listen(3000);
-console.log('server listening at port 3000');
+server.listen(port);
+console.log('server listening at port ', port);
