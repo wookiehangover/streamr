@@ -1,15 +1,25 @@
 {
   "author": "wookiehangover",
   "name": "streamr",
-  "version": "0.0.0",
-  "main": "server.js",
+  "version": "0.1.0",
+  "contributors": [ 
+    {
+      "name": "burgalon",
+    },
+    {
+      "name": "C-J Blomqvist",
+      "email": "carl@cjblomqvist.com"
+    }
+  ],
+  "main": "./lib/index.js",
   "dependencies": {
-    "ecstatic": "0.1.6",
-    "formidable": "git://github.com/burgalon/node-formidable.git",
-    "knox": "git://github.com/wookiehangover/knox.git"
+    "knox": ">=0.1.0"
   },
   "devDependencies": {},
-  "optionalDependencies": {},
+  "optionalDependencies": {
+    "ecstatic": "0.1.6",
+    "formidable": ">=1.0.10"
+  },
   "engines": {
     "node": "~0.6.0"
   }
